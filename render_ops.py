@@ -786,6 +786,21 @@ class VRAY_OT_write_geometry(bpy.types.Operator):
 
 bpy.utils.register_class(VRAY_OT_write_geometry)
 
+class VRAY_OT_renderDeferred(bpy.types.Operator):
+	bl_idname      = "vray.render_deferred"
+	bl_label       = "V-Ray Renderer Deferred"
+	bl_description = "Render Deferred operator. Just exporting config data."
+
+	def execute(self, context):
+		scene = context.scene
+
+		VRayScene    = scene.vray
+		VRayExporter = VRayScene.exporter
+		vb25.render.render_deferred(None, scene)
+
+		return {'FINISHED'}
+
+bpy.utils.register_class(VRAY_OT_renderDeferred)
 
 class VRAY_OT_render(bpy.types.Operator):
 	bl_idname      = "vray.render"

@@ -39,65 +39,65 @@ UI=   "Render"
 DESC= "MtlRenderStats settings."
 
 PARAMS= (
-	'camera_visibility',
-	'reflections_visibility',
-	'refractions_visibility',
-	'gi_visibility',
-	'shadows_visibility',
-	'visibility'
+    'camera_visibility',
+    'reflections_visibility',
+    'refractions_visibility',
+    'gi_visibility',
+    'shadows_visibility',
+    'visibility'
 )
 
 
 def add_properties(rna_pointer):
-	class MtlRenderStats(bpy.types.PropertyGroup):
-		pass
-	bpy.utils.register_class(MtlRenderStats)
+    class MtlRenderStats(bpy.types.PropertyGroup):
+        pass
+    bpy.utils.register_class(MtlRenderStats)
 
-	rna_pointer.MtlRenderStats= PointerProperty(
-		name= "MtlRenderStats",
-		type=  MtlRenderStats,
-		description= "V-Ray MtlRenderStats settings"
-	)
+    rna_pointer.MtlRenderStats= PointerProperty(
+        name= "MtlRenderStats",
+        type=  MtlRenderStats,
+        description= "V-Ray MtlRenderStats settings"
+    )
 
-	MtlRenderStats.use= BoolProperty(
-		name= "Use material render options",
-		description= "Use material render options",
-		default= False
-	)
+    MtlRenderStats.use= BoolProperty(
+        name= "Use material render options",
+        description= "Use material render options",
+        default= False
+    )
 
-	MtlRenderStats.camera_visibility= BoolProperty(
-		name= "Camera visibility",
-		description= "TODO",
-		default= True
-	)
+    MtlRenderStats.camera_visibility= BoolProperty(
+        name= "Camera visibility",
+        description= "TODO",
+        default= True
+    )
 
-	MtlRenderStats.reflections_visibility= BoolProperty(
-		name= "Reflections visibility",
-		description= "TODO",
-		default= True
-	)
+    MtlRenderStats.reflections_visibility= BoolProperty(
+        name= "Reflections visibility",
+        description= "TODO",
+        default= True
+    )
 
-	MtlRenderStats.refractions_visibility= BoolProperty(
-		name= "Refractions visibility",
-		description= "TODO",
-		default= True
-	)
+    MtlRenderStats.refractions_visibility= BoolProperty(
+        name= "Refractions visibility",
+        description= "TODO",
+        default= True
+    )
 
-	MtlRenderStats.gi_visibility= BoolProperty(
-		name= "GI visibility",
-		description= "TODO",
-		default= True
-	)
+    MtlRenderStats.gi_visibility= BoolProperty(
+        name= "GI visibility",
+        description= "TODO",
+        default= True
+    )
 
-	MtlRenderStats.shadows_visibility= BoolProperty(
-		name= "Shadows visibility",
-		description= "TODO",
-		default= True
-	)
+    MtlRenderStats.shadows_visibility= BoolProperty(
+        name= "Shadows visibility",
+        description= "TODO",
+        default= True
+    )
 
-	MtlRenderStats.visibility= BoolProperty(
-		name= "Overall visibility",
-		description= "TODO",
-		default= True
-	)
+    MtlRenderStats.visibility= BoolProperty(
+        name= "Overall visibility",
+        description= "TODO",
+        default= True
+    )
 

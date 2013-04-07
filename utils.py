@@ -554,11 +554,11 @@ def a(scene, t):
 
 # Hex value format
 def HexFormat(value):
-    if type(value) is float:
-        bytes= struct.pack('<f', value)
-    else:
-        bytes= struct.pack('<i', value)
-    return ''.join(["%02X" % b for b in bytes])
+	if type(value) is float:
+		bytes= struct.pack('<f', value)
+	else:
+		bytes= struct.pack('<i', value)
+	return ''.join(["%02X" % b for b in bytes])
 
 # Helper function to convert a value to
 # hex in vrscene format
@@ -1101,6 +1101,7 @@ def init_files(bus):
 		file_name = clean_string(file_name)
 		load_file_name = file_name
 	bus['filenames']['output_filename'] = "%s.%s" % (file_name, ext)
+	print("[DEBUG] Filename: ", "%s.%s" % (file_name, ext))
 
 	# Render output - load file name
 	if SettingsOutput.img_file_needFrameNumber:
@@ -1136,3 +1137,7 @@ def load_result(engine, w, h, filepath):
 	except:
 		pass
 	engine.end_result(result)
+
+def getUVIndex(target, uv_name):
+	index = target.data.uv_layers.find(uv_name)
+	return index

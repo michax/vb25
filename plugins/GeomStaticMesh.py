@@ -74,11 +74,11 @@ def write_mesh_hex(bus):
 	me_name= bus['node']['mesh_name']
 
 	GeomStaticMesh= ob.data.vray.GeomStaticMesh
-	
+
 	face_attr = 'faces' if 'faces' in dir(me) else 'polygons'
 
 	face_tri= (0,1,2,2,3,0)
-	
+
 	ofile.write("\nGeomStaticMesh %s {" % me_name)
 
 	ofile.write("\n\tvertices= interpolate((%d, ListVectorHex(\""%(scene.frame_current))
@@ -177,7 +177,10 @@ def write_mesh_hex(bus):
 			if uv_texture_idx:
 				ofile.write(",")
 
-			uv_layer_index= get_uv_layer_id(bus['uvs'], uv_texture.name)
+			uv_layer_index = getUVIndex(ob, uv_texture.name) + 1
+			if uv_layer_index <= 0: uv_layer_index = 1
+			# Not sure why, but in most cases this returns 1 for all UV's
+			#uv_layer_index= get_uv_layer_id(bus['uvs'], uv_texture.name)
 
 			ofile.write("\n\t\t// %s"%(uv_texture.name))
 			ofile.write("\n\t\tList(%d,ListVectorHex(\""%(uv_layer_index))
@@ -217,7 +220,7 @@ def write(bus):
 
 	VRayScene= scene.vray
 	VRayExporter= VRayScene.exporter
-	
+
 	debug(scene,
 		  "Frame {0}: Mesh: \033[0;32m{1:<32}\033[0m".format(scene.frame_current, color(ob.data.name, 'green')),
 		  newline= VRayExporter.debug)

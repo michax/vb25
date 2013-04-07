@@ -131,12 +131,20 @@ def write(bus):
 	scene=  bus['scene']
 
 	VRayScene=      scene.vray
+	VRayBake=       VRayScene.VRayBake
 	VRayExporter=   VRayScene.exporter
 	VRayDR=         VRayScene.VRayDR
 	SettingsOutput= VRayScene.SettingsOutput
 
 	wx= int(scene.render.resolution_x * scene.render.resolution_percentage * 0.01)
 	wy= int(scene.render.resolution_y * scene.render.resolution_percentage * 0.01)
+
+	# Check if bake is on
+	if VRayBake.use and VRayBake.bake_node:
+		bake_node= get_data_by_name(scene, 'objects', VRayBake.bake_node)
+		if bake_node and bake_node.vray.MtlBakeStats and bake_node.vray.MtlBakeStats.use and bake_node.vray.MtlBakeStats.override_resolution:
+			wx = bake_node.vray.MtlBakeStats.resolution_x
+			wy = bake_node.vray.MtlBakeStats.resolution_y
 
 	ofile.write("\nSettingsOutput SettingsOutput {")
 	if VRayExporter.auto_save_render:

@@ -1753,6 +1753,7 @@ def add_properties():
 	PLUGINS['MATERIAL']['MtlOverride'].add_properties(VRayObject)
 	PLUGINS['MATERIAL']['MtlWrapper'].add_properties(VRayObject)
 	PLUGINS['MATERIAL']['MtlRenderStats'].add_properties(VRayObject)
+	PLUGINS['MATERIAL']['MtlBakeStats'].add_properties(VRayObject)
 
 	PLUGINS['GEOMETRY']['LightMesh'].add_properties(VRayObject)
 	PLUGINS['GEOMETRY']['LightMesh'].add_properties(VRayMaterial)
